@@ -9,9 +9,13 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+container: mcr.microsoft.com/dotnet/core/aspnet:3.1
+
 variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+- task: DotnetCoreCLI@2
+  inputs:
+   command: build
+    
